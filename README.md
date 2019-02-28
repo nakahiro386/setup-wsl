@@ -12,15 +12,15 @@ $ ./init.sh
 
 ### パスワードのリセット
 
-1. コマンドプロンプトで以下を実行。デフォルトユーザをrootに
+1. コマンドプロンプトを実行。デフォルトユーザをrootに変更する。
     ```dosbatch
     > ubuntu1804.exe config --default-user root
     ```
-1. Ubuntu 18.04を実行。対象ユーザのパスワードを変更
+1. Ubuntu 18.04を実行。対象ユーザのパスワードを変更する。
     ```sh
     $ password [username]
     ```
-1. コマンドプロンプトで以下を実行。デフォルトユーザを対象ユーザに戻す。
+1. コマンドプロンプトを実行。デフォルトユーザを対象ユーザに戻す。
     ```dosbatch
     > ubuntu1804.exe config --default-user [username]
     ```
