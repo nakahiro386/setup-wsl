@@ -3,8 +3,9 @@
 ## Usage
 
 ```sh
-cd /mnt/c/home/setup-wsl/
-./init.sh
+$ git clone https://github.com/nakahiro386/setup-wsl.git
+$ cd setup-wsl
+$ ./init.sh
 ```
 
 ## Tips
