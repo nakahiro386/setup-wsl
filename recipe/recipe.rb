@@ -32,29 +32,21 @@ end
 %w(language-pack-ja tzdata manpages-ja manpages-ja-dev).each do |pkg|
   package pkg
 end
-# package 'language-pack-ja' do
-  # notifies :run, "execute[update-locale]", :immediately
-# end
+
+node[:locale] ||= 'ja_JP.UTF-8'
 execute "update-locale" do
-  command "update-locale LANG=ja_JP.UTF-8"
-  not_if "locale | grep 'ja_JP.UTF-8'"
-  # action :nothing
+  command "update-locale LANG=#{node[:locale]}"
+  not_if "locale | grep '#{node[:locale]}'"
 end
-# package 'tzdata' do
-  # notifies :run, "execute[update-timezone]", :immediately
-# end
+
+node[:tz] ||= 'Asia/Tokyo'
 execute "update-timezone" do
   command <<-"EOH"
-ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+ln -sf /usr/share/zoneinfo/#{node[:tz]} /etc/localtime
 dpkg-reconfigure --frontend noninteractive tzdata
 EOH
   not_if "date | grep 'JST'"
-  # action :nothing
 end
-
-# %w(manpages-ja manpages-ja-dev).each do |pkg|
-  # package pkg
-# end
 
 # sshの設定
 file '/etc/ssh/sshd_config' do
