@@ -8,6 +8,21 @@ $ cd setup-wsl
 $ ./init.sh
 ```
 
+ubuntuを再起動
+
+```sh
+$ cd setup-wsl
+$ ./install_anyenv.sh
+```
+
+再ログイン
+
+```sh
+$ pyenv install 3.7.2
+$ pyenv global 3.7.2
+$ pip install --upgrade pip setuptools
+```
+
 ## Tips
 
 ### パスワードのリセット
