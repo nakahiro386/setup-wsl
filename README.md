@@ -17,10 +17,22 @@ $ ./install_anyenv.sh
 
 再ログイン
 
+ホストからssh-keyをコピーする
+
 ```sh
-$ pyenv install 3.7.2
-$ pyenv global 3.7.2
+cp /mnt/c/home/.ssh/id_rsa{,.pub} ~/.ssh/
+chmod u=rw,g=,o= ~/.ssh/id_rsa{,.pub}
+ssh-copy-id localhost
+```
+
+```sh
+$ cd setup-wsl/ansible
 $ pip install --upgrade pip setuptools
+$ pip install --user --upgrade pipenv
+$ pipenv sync
+$ pipenv run galaxy-install
+# $ pipenv run playbook-check
+$ pipenv run playbook
 ```
 
 ## Tips

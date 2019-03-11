@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: no
+  gather_facts: yes
+  environment: "{{ environment_vars }}"
+  vars:
+    vim_force_build: false
+  pre_tasks:
+    - block:
+      - name: Test connection
+        ping:
+      tags: pre_tasks
+  roles:
+    - role: nakahiro386.apt
+      become: yes
+    - role: nakahiro386.dotfiles
+    - role: nakahiro386.vim
+      become: yes
+  tasks:
+  post_tasks:
+

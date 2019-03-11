@@ -1,2 +1,9 @@
 bin/*
 !bin/.gitkeep
+ansible/log/*
+!ansible/log/.gitkeep
+ansible/roles/*
+!ansible/roles/.gitkeep
+*.retry
+.env
+.venv

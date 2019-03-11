@@ -1,0 +1,16 @@
+---
+# from galaxy
+
+# from github.com
+- src: https://github.com/nakahiro386/ansible-role-apt.git
+  version: master
+  name: nakahiro386.apt
+- src: https://github.com/nakahiro386/ansible-role-vim.git
+  version: master
+  name: nakahiro386.vim
+
+# from bitbucket.org
+- src: https://bitbucket.org/nakahiro386/dotfiles.git
+  version: master
+  name: nakahiro386.dotfiles
+  scm: git
