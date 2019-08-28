@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-version='1.7.2'
+version='1.8.0'
 mitamae_version="mitamae-${version}"
 mitamae_path="./bin/${mitamae_version}"
 
