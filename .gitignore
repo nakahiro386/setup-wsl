@@ -1,5 +1,5 @@
-bin/*
-!bin/.gitkeep
+mitamae/bin/*
+!mitamae/bin/.gitkeep
 ansible/log/*
 !ansible/log/.gitkeep
 ansible/roles/*
