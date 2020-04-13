@@ -61,7 +61,3 @@ execute "dpkg-reconfigure openssh-server" do
   action :nothing
 end
 
-file "/etc/sudoers.d/#{node[:target_user]}" do
-  content "#{node[:target_user]} ALL=NOPASSWD: /usr/sbin/service\n"
-end
-

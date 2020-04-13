@@ -1,2 +1,2 @@
 var ws = new ActiveXObject("WScript.Shell");
-ws.Run("ubuntu1804.exe -c \"sudo service ssh start\"", 0, false);
+ws.Run("wsl -u root -- service ssh start", 0, false);
