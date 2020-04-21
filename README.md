@@ -3,7 +3,7 @@
 ## Usage
 
 ```sh
-$ git clone https://github.com/nakahiro386/setup-wsl.git
+$ git clone --recursive https://github.com/nakahiro386/setup-wsl.git
 $ cd setup-wsl
 $ ./init.sh
 ```
@@ -20,15 +20,16 @@ $ ./install_anyenv.sh
 ホストからssh-keyをコピーする
 
 ```sh
+mkdir -p -m u=rwx,g=,o= ~/.ssh
 cp /mnt/c/home/.ssh/id_rsa{,.pub} ~/.ssh/
 chmod u=rw,g=,o= ~/.ssh/id_rsa{,.pub}
 ssh-copy-id localhost
 ```
 
 ```sh
-$ cd setup-wsl/ansible
 $ pip install --upgrade pip setuptools
-$ pip install --user --upgrade pipenv
+$ pip install --upgrade pipenv
+$ cd setup-wsl/ansible
 $ pipenv sync
 $ pipenv run galaxy-install
 # $ pipenv run playbook-check
