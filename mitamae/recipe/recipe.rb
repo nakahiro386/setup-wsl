@@ -16,8 +16,10 @@ end
 
 execute "apt upgrade" do
   command <<-"EOH"
-apt update
-apt upgrade --auto-remove --assume-yes
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -q
+apt-get upgrade -y -q
+apt-get autoremove -y -q
 EOH
   action :nothing
 end
