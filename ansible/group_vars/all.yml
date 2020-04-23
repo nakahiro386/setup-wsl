@@ -30,6 +30,8 @@ nakahiro386_apt_present_packages:
   # - 'python3'
   # - 'python3-pip'
   # - 'vifm'
+  - 'tig'
+  - 'debian-goodies'
 nakahiro386_apt_absent_packages:
   - 'nano'
   # - 'tmux'
