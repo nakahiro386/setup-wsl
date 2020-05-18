@@ -1,0 +1,18 @@
+anyenv:
+  envs:
+    pyenv:
+      install: true
+      install_dependency: true
+      versions:
+        - '3.7.7'
+      global: '3.7.7'
+    rbenv:
+      install: true
+      install_dependency: true
+    nodenv:
+      install: true
+      versions:
+        - '10.20.1'
+        - '12.16.3'
+      global: '12.16.3'
+      plugins: []
