@@ -61,3 +61,44 @@ $ pipenv run playbook
     * sshdなどのバックグラウンドプロセスは終了しないことがあるのでプロセスを確認する
 1. リセットボタンを押す
 
+
+### WSL 2 への変換
+
+* [Windows Subsystem for Linux (WSL) を Windows 10 にインストールする | Microsoft Docs](https://docs.microsoft.com/ja-jp/windows/wsl/install-win10)
+
+1. バージョンの確認
+    ```dosbatch
+    >wsl -l -v
+      NAME            STATE           VERSION
+    * Ubuntu-18.04    Stopped         1
+    ```
+1. "仮想マシン プラットフォーム" オプション機能の有効化
+    * 管理者権限のpowershellで以下を実行
+        ```ps1
+        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+        展開イメージのサービスと管理ツール
+        バージョン: 10.0.19041.572
+
+        イメージのバージョン: 10.0.19041.572
+
+        機能を有効にしています
+        [==========================100.0%==========================]
+        操作は正常に完了しました。
+        ```
+    * PCを再起動する
+1. Linux カーネル更新プログラム のインストール
+    * [x64 マシン用 WSL2 Linux カーネル更新プログラム パッケージ](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)をダウンロード、実行する
+1. WSL 2 をデフォルトバージョンに設定
+    * 管理者権限のpowershellで以下を実行
+        ```ps1
+        wsl --set-default-version 2
+        WSL 2 との主な違いについては、https://aka.ms/wsl2 を参照してください
+        ```
+1. 既存のディストリビューションをWSL 2に変換する。
+    ```ps1
+    wsl --set-version Ubuntu-18.04 2
+    変換中です。この処理には数分かかることがあります...
+    WSL 2 との主な違いについては、https://aka.ms/wsl2 を参照してください
+    変換が完了しました。
+    ```
