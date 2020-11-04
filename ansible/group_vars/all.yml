@@ -41,3 +41,31 @@ nakahiro386_apt_absent_packages:
   - 'nano'
   # - 'tmux'
 nakahiro386_apt_cache_valid_time: 21600
+
+docker_required_packages:
+  - 'software-properties-common'
+  - 'apt-transport-https'
+  - 'ca-certificates'
+  - 'curl'
+  - 'gnupg-agent'
+
+docker_apt_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+
+docker_packages:
+  - 'docker-ce'
+  - 'docker-ce-cli'
+  - 'containerd.io'
+
+docker_compose_version: "1.27.4"
+
+# バイナリ版
+docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_machine }}"
+docker_compose_checksum: "sha256:04216d65ce0cd3c27223eab035abfeb20a8bef20259398e3b9d9aa8de633286d"
+
+# # docker image 版
+# docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/run.sh"
+# docker_compose_checksum: "sha256:bb4f7f6c29871c6dbf1fb46f3edc94c50544d60a0d4375b6aedc54940678b38e"
+
+# bash-completion
+docker_compose_bash_completion_url: "https://raw.githubusercontent.com/docker/compose/{{ docker_compose_version }}/contrib/completion/bash/docker-compose"
+docker_compose_bash_completion_checksum: "sha256:9e66dce0b81295e39135fa434d98b101c677c246d052160325ae49be2739104d"
