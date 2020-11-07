@@ -55,5 +55,52 @@
           checksum: "{{ docker_compose_bash_completion_checksum }}"
       tags: 'docker'
       become: yes
+
+    - block:
+      - name: Install vifm required packages.
+        apt:
+          pkg: "{{ vifm_required_packages }}"
+          state: present
+      - name: Install vifm additional packages.
+        apt:
+          pkg: "{{ vifm_additional_packages }}"
+          state: present
+      - name: "git clone vifm to {{ vifm_src_dir }}"
+        git:
+          repo: "{{ vifm_git_url }}"
+          dest: "{{ vifm_src_dir }}"
+          version: "{{ vifm_version }}"
+          force: yes
+        register: vifm_clone
+        diff: no
+      - name: set vifm_build
+        set_fact:
+          vifm_build: "{{ vifm_clone is changed or vifm_force_build }}"
+
+      - name: run scripts/fix-timestamps script
+        command: "scripts/fix-timestamps"
+        args:
+          chdir: "{{ vifm_src_dir }}"
+        when: vifm_clone.before is none
+
+      - block:
+        - name: configure vifm
+          command: "{{ vifm_configure_command }}"
+          args:
+            chdir: "{{ vifm_src_dir }}"
+
+        - name: make vifm
+          make:
+            chdir: "{{ vifm_src_dir }}"
+            target: all
+
+        - name: make install vifm
+          make:
+            chdir: "{{ vifm_src_dir }}"
+            target: install
+        when: vifm_build | bool
+      tags: 'vifm'
+      become: yes
+
   post_tasks:
 
