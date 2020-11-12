@@ -31,12 +31,10 @@
         apt_repository:
           repo: "{{ docker_apt_repository }}"
           state: present
-        register: add_apt_repository
       - name: Install Docker packages
         apt:
           pkg: "{{ docker_packages }}"
           state: present
-          update_cache: "{{ add_apt_repository.changed }}"
       - name: get docker-compose {{ docker_compose_version }}
         get_url:
           url: "{{ docker_compose_url }}"
@@ -107,12 +105,10 @@
         apt_repository:
           repo: ppa:lazygit-team/release
           state: present
-        # register: add_lazygit_apt_repository
       - name: Install lazygit  packages
         apt:
           pkg: lazygit
           state: present
-          # update_cache: "{{ add_lazygit_apt_repository.changed }}"
       tags: 'lazygit'
       become: yes
 
