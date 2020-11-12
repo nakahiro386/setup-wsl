@@ -102,5 +102,19 @@
       tags: 'vifm'
       become: yes
 
+    - block:
+      - name: Add lazygit apt repository
+        apt_repository:
+          repo: ppa:lazygit-team/release
+          state: present
+        # register: add_lazygit_apt_repository
+      - name: Install lazygit  packages
+        apt:
+          pkg: lazygit
+          state: present
+          # update_cache: "{{ add_lazygit_apt_repository.changed }}"
+      tags: 'lazygit'
+      become: yes
+
   post_tasks:
 
