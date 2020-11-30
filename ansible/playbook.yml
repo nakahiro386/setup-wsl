@@ -13,7 +13,6 @@
   roles:
     - role: nakahiro386.apt
       become: yes
-    - role: nakahiro386.dotfiles
     - role: nakahiro386.vim
       become: yes
   tasks:
