@@ -19,7 +19,6 @@ nakahiro386_apt_present_packages:
   - 'aptitude'
   - 'language-pack-ja'
   - 'bash-completion'
-  - 'git'
   - 'vim'
   # - 'vim-gtk3'
   # - 'fonts-ipafont'
