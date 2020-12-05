@@ -102,3 +102,14 @@ $ pipenv run playbook
     WSL 2 との主な違いについては、https://aka.ms/wsl2 を参照してください
     変換が完了しました。
     ```
+
+### WSL 2の場合に外部からSSH接続する
+
+* 管理者権限のpowershellで以下を実行
+    ```ps1
+    > #netsh.exe interface portproxy delete v4tov4 listenport=22
+    > netsh.exe interface portproxy add v4tov4 listenport=22 connectaddress=(wsl -d Ubuntu-18.04 exec hostname -I).trimend()
+    > netsh.exe interface portproxy show v4tov4
+    > sc.exe config iphlpsvc start=auto
+    > sc.exe start  iphlpsvc
+    ```
