@@ -17,6 +17,19 @@
       become: yes
   tasks:
     - block:
+      - name: Add HashiCorp official GPG key
+        apt_key:
+          # id: 0EBFCD88
+          url: https://apt.releases.hashicorp.com/gpg
+          state: present
+      - name: Add HashiCorp apt repository
+        apt_repository:
+          repo: "{{ hashicorp_apt_repository }}"
+          state: present
+      tags: 'hashicorp'
+      become: yes
+
+    - block:
       - name: Install Docker required packages.
         apt:
           pkg: "{{ docker_required_packages }}"
