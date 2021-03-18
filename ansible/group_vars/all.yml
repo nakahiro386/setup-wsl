@@ -37,6 +37,7 @@ nakahiro386_apt_present_packages:
   - 'unzip'
   - 'sshfs'
   - 'libxml2-utils'
+  - 'cmigemo'
 nakahiro386_apt_absent_packages:
   - 'nano'
   # - 'tmux'
