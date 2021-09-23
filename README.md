@@ -113,3 +113,11 @@ $ pipenv run playbook
     > sc.exe config iphlpsvc start=auto
     > sc.exe start  iphlpsvc
     ```
+
+### WSL 2にlocalhostでアクセスする
+
+* `%USERPROFILE%\.wslconfig`
+    ```
+    [wsl2]
+    localhostForwarding=True
+    ```
