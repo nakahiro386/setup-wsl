@@ -136,5 +136,17 @@
       tags: 'lazygit'
       become: yes
 
+    - block:
+      - name: Add universal-ctags apt repository
+        apt_repository:
+          repo: ppa:hnakamur/universal-ctags
+          state: present
+      - name: Install universal-ctags packages
+        apt:
+          pkg: universal-ctags
+          state: present
+      tags: 'universal-ctags'
+      become: yes
+
   post_tasks:
 
