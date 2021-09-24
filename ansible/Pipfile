@@ -9,7 +9,7 @@ verify_ssl = true
 ansible = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
 
 [scripts]
 galaxy-install = "env ANSIBLE_CONFIG=./ansible.cfg ansible-galaxy install --roles-path=./roles --role-file=requirements.yml"
