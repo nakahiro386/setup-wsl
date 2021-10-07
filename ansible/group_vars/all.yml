@@ -83,7 +83,7 @@ vifm_additional_packages:
   - 'fuseiso'
 vifm_git_url: 'https://github.com/vifm/vifm.git'
 vifm_src_dir: '/usr/local/src/github.com/vifm/vifm'
-vifm_version: 'v0.11'
+vifm_version: 'v0.12'
 vifm_force_build: false
 vifm_configure_command: |
   ./configure
