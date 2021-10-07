@@ -58,11 +58,11 @@ docker_packages:
   - 'docker-ce-cli'
   - 'containerd.io'
 
-docker_compose_version: "1.27.4"
+docker_compose_version: "1.29.2"
 
 # バイナリ版
 docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_machine }}"
-docker_compose_checksum: "sha256:04216d65ce0cd3c27223eab035abfeb20a8bef20259398e3b9d9aa8de633286d"
+docker_compose_checksum: "sha256:f3f10cf3dbb8107e9ba2ea5f23c1d2159ff7321d16f0a23051d68d8e2547b323"
 
 # # docker image 版
 # docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/run.sh"
@@ -70,7 +70,7 @@ docker_compose_checksum: "sha256:04216d65ce0cd3c27223eab035abfeb20a8bef20259398e
 
 # bash-completion
 docker_compose_bash_completion_url: "https://raw.githubusercontent.com/docker/compose/{{ docker_compose_version }}/contrib/completion/bash/docker-compose"
-docker_compose_bash_completion_checksum: "sha256:9e66dce0b81295e39135fa434d98b101c677c246d052160325ae49be2739104d"
+docker_compose_bash_completion_checksum: "sha256:9926c945b466fad570ad574089d6a90f7d9ba452a2d6a8ba67611a664707f0de"
 
 vifm_required_packages:
   - 'libncursesw5-dev'
