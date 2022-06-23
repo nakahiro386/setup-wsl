@@ -38,9 +38,9 @@ nakahiro386_apt_present_packages:
   - 'sshfs'
   - 'libxml2-utils'
   - 'cmigemo'
+  - 'tmux'
 nakahiro386_apt_absent_packages:
   - 'nano'
-  # - 'tmux'
 nakahiro386_apt_cache_valid_time: 21600
 
 docker_required_packages:
