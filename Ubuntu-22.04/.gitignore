@@ -1,0 +1,11 @@
+mitamae/bin/*
+!mitamae/bin/.gitkeep
+ansible/facts/*
+!ansible/facts/.gitkeep
+ansible/log/*
+!ansible/log/.gitkeep
+ansible/roles/*
+!ansible/roles/.gitkeep
+*.retry
+.env
+.venv
