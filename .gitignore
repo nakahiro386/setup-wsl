@@ -1,5 +1,6 @@
 mitamae/bin/*
 !mitamae/bin/.gitkeep
+mitamae/proxy.yaml
 ansible/facts/*
 !ansible/facts/.gitkeep
 ansible/log/*
