@@ -10,7 +10,7 @@ no_proxy = node['proxy']['no_proxy']
 
 raise "rootでは実行しない。" if node[:target_user] == "root"
 
-file "/exc/profile.d/proxy.sh" do
+file "/etc/profile.d/proxy.sh" do
   action :create
   owner "root"
   group "root"
