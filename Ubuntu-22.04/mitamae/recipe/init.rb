@@ -87,14 +87,21 @@ file '/etc/apt/sources.list' do
   end
   notifies :run, "execute[apt update]", :immediately
 end
+execute "apt update" do
+  command <<-"EOH"
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -q
+  EOH
+  action :nothing
+end
 
+# docker
 execute "docker.gpg" do
   command <<-"EOH"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
   EOH
   not_if "test -f /etc/apt/keyrings/docker.gpg"
 end
-
 file '/etc/apt/sources.list.d/docker.list' do
   action :create
   owner "root"
@@ -105,63 +112,16 @@ deb [arch=#{architecture} signed-by=/etc/apt/keyrings/docker.gpg] https://downlo
   EOH
   notifies :run, "execute[apt update]", :immediately
 end
-
-execute "apt update" do
-  command <<-"EOH"
-export DEBIAN_FRONTEND=noninteractive
-apt-get update -q
-  EOH
-  action :nothing
-end
-
-%w(docker-ce docker-ce-cli containerd.io docker-compose-plugin uidmap openssh-server).each do |pkg|
+%w(docker-ce docker-ce-cli containerd.io docker-compose-plugin uidmap).each do |pkg|
   package pkg do
     action :install
   end
 end
 
-file '/etc/ssh/sshd_config' do
-  action :edit
-  block do |content|
-    content.gsub!(/#?Port .*/, "Port 2204")
-    content.gsub!(/#?PasswordAuthentication .*/, "PasswordAuthentication yes")
-  end
-  notifies :run, "execute[dpkg-reconfigure openssh-server]", :immediately
-end
-service "ssh.service" do
-  action [:enable, :start]
-end
-execute "dpkg-reconfigure openssh-server" do
-  command "dpkg-reconfigure --frontend noninteractive openssh-server"
-  action :nothing
-end
-
+# docker rootless mode
 %w(docker.service docker.socket containerd.service).each do |name|
   service name do
     action [:disable, :stop]
-  end
-end
-
-
-file File.join(home, ".hushlogin") do
-  action :create
-  user user
-  owner user
-  group user
-  mode "644"
-end
-
-directory File.join(home, ".ssh") do
-  action :create
-  user user
-  owner user
-  group user
-  mode "700"
-end
-
-%w(docker-ce docker-ce-cli containerd.io docker-compose-plugin uidmap openssh-server).each do |pkg|
-  package pkg do
-    action :install
   end
 end
 
@@ -205,5 +165,40 @@ end
 
 execute "sudo -i -u #{user} dockerd-rootless-setuptool.sh --skip-iptables install" do
   not_if "test -f #{File.join(home, user_systemd_dir, "docker.service")}"
+end
+
+# setup ssh
+package "openssh-server" do
+  action :install
+end
+file '/etc/ssh/sshd_config' do
+  action :edit
+  block do |content|
+    content.gsub!(/#?Port .*/, "Port 2204")
+    content.gsub!(/#?PasswordAuthentication .*/, "PasswordAuthentication yes")
+  end
+  notifies :run, "execute[dpkg-reconfigure openssh-server]", :immediately
+end
+service "ssh.service" do
+  action [:enable, :start]
+end
+execute "dpkg-reconfigure openssh-server" do
+  command "dpkg-reconfigure --frontend noninteractive openssh-server"
+  action :nothing
+end
+directory File.join(home, ".ssh") do
+  action :create
+  user user
+  owner user
+  group user
+  mode "700"
+end
+
+file File.join(home, ".hushlogin") do
+  action :create
+  user user
+  owner user
+  group user
+  mode "644"
 end
 
