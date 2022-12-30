@@ -95,6 +95,17 @@ apt-get update -q
   action :nothing
 end
 
+# 日本語化
+%w(language-pack-ja manpages-ja manpages-ja-dev).each do |pkg|
+  package pkg
+end
+
+node[:locale] ||= 'ja_JP.UTF-8'
+execute "set-locale" do
+  command "localectl set-locale LANG=#{node[:locale]}"
+  not_if "localectl status | grep 'LANG=#{node[:locale]}'"
+end
+
 include_recipe 'recipe/sshd'
 
 directory File.join(home, ".ssh") do
