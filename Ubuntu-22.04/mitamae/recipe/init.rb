@@ -22,7 +22,6 @@ Defaults:#{user} env_keep += "EDITOR"
   EOH
 end
 
-
 file "/etc/wsl.conf" do
   action :create
   owner "root"
@@ -35,7 +34,7 @@ default=#{user}
 systemd=true
 [interop]
 appendWindowsPath=false
-EOH
+  EOH
 end
 
 # Systemd units known to be problematic under WSL · arkane-systems/genie Wiki
@@ -68,7 +67,7 @@ ExecStart=/usr/bin/ln -s /dev/shm /run/shm
 
 [Install]
 WantedBy=sysinit.target
-EOH
+  EOH
   notifies :restart, "service[fixshm.service]", :immediately
 end
 service "fixshm.service" do
@@ -92,7 +91,7 @@ end
 execute "docker.gpg" do
   command <<-"EOH"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-EOH
+  EOH
   not_if "test -f /etc/apt/keyrings/docker.gpg"
 end
 
@@ -103,7 +102,7 @@ file '/etc/apt/sources.list.d/docker.list' do
   mode "644"
   content <<-"EOH"
 deb [arch=#{architecture} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu #{codename} stable
-EOH
+  EOH
   notifies :run, "execute[apt update]", :immediately
 end
 
@@ -111,7 +110,7 @@ execute "apt update" do
   command <<-"EOH"
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -q
-EOH
+  EOH
   action :nothing
 end
 
