@@ -1,3 +1,6 @@
 [submodule "mitamae/plugins/mitamae-plugin-recipe-anyenv"]
 	path = mitamae/plugins/mitamae-plugin-recipe-anyenv
 	url = https://github.com/nakahiro386/mitamae-plugin-recipe-anyenv.git
+[submodule "Ubuntu-22.04/mitamae/plugins/mitamae-plugin-resource-git_clone"]
+	path = Ubuntu-22.04/mitamae/plugins/mitamae-plugin-resource-git_clone
+	url = https://github.com/nakahiro386/mitamae-plugin-resource-git_clone.git
