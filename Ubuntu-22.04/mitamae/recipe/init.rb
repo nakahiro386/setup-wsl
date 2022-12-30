@@ -11,6 +11,18 @@ codename = run_command("lsb_release -cs").stdout.chomp
 
 raise "rootでは実行しない。" if user == "root"
 
+file File.join("/etc/sudoers.d", user) do
+  action :create
+  owner "root"
+  group "root"
+  mode "440"
+  content <<-"EOH"
+#{user} ALL=NOPASSWD: ALL
+Defaults:#{user} env_keep += "EDITOR"
+  EOH
+end
+
+
 file "/etc/wsl.conf" do
   action :create
   owner "root"
