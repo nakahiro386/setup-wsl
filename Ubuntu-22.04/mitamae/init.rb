@@ -106,6 +106,12 @@ execute "set-locale" do
   not_if "localectl status | grep 'LANG=#{node[:locale]}'"
 end
 
+%w(software-properties-common aptitude needrestart bc zip unzip tree htop tmux vim-gtk3 libxml2-utils cmigemo vifm sshfs curlftpfs fuse fuse-zip fusefat fuseiso).each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+
 include_recipe 'recipe/sshd'
 
 directory File.join(home, ".ssh") do
