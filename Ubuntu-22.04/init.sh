@@ -2,4 +2,4 @@
 set -e
 
 cd $(dirname $0)
-sudo ./mitamae/mitamae.sh local $@ recipe/recipe.rb
+sudo ./mitamae/mitamae.sh local $@ recipe/init.rb
