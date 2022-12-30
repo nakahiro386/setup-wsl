@@ -116,3 +116,17 @@ end
 include_recipe 'docker'
 include_recipe 'docker-rootless'
 
+git_clone File.join(home, 'repo/github.com/nakahiro386/dotfiles') do
+  repository "git@github.com:nakahiro386/dotfiles.git"
+  user user
+end
+
+vimfiles = File.join(home, 'repo/github.com/nakahiro386/vimfiles')
+git_clone "#{vimfiles}" do
+  repository "git@github.com:nakahiro386/vimfiles.git"
+  user user
+end
+link File.join(home, '.vim') do
+  to vimfiles
+  user user
+end

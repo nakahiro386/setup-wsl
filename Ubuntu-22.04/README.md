@@ -23,16 +23,26 @@
     $ sudo apt upgrade --auto-remove -y ;sudo apt autoclean
     $ sudo systemctl poweroff
     ```
+* ホストから`ssh-key`をコピーする
+    ```sh
+    $ mkdir -p -m u=rwx,g=,o= ~/.ssh
+    $ cp /mnt/c/home/.ssh/id_rsa{,.pub} ~/.ssh/
+    $ chmod u=rw,g=,o= ~/.ssh/id_rsa{,.pub}
+    $ ssh-copy-id -p 2204 localhost
+    ```
 * `mitamae`でprovisioning
     ```sh
     $ git clone --recursive https://github.com/nakahiro386/setup-wsl.git
     $ cd setup-wsl/Ubuntu-22.04
-    $ ./init.sh --dry-run
+    $ ./init.sh
     $ docker run --rm hello-world
     ```
-* ホストから`ssh-key`をコピーする
+* `dotfiles`のセットアップ
     ```sh
-    $ cp /mnt/c/home/.ssh/id_rsa{,.pub} ~/.ssh/
-    $ chmod u=rw,g=,o= ~/.ssh/id_rsa{,.pub}
-    $ ssh-copy-id -p 2204 localhost
+    $ cd ~/repo/github.com/nakahiro386/dotfiles
+    $ ./init.sh --dry-run
+    $ ./init.sh
+    $ ./install_anyenv.sh --dry-run
+    $ ./install_anyenv.sh
+    $ anyenv git co master
     ```
