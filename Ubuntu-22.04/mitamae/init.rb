@@ -106,7 +106,7 @@ execute "set-locale" do
   not_if "localectl status | grep 'LANG=#{node[:locale]}'"
 end
 
-%w(software-properties-common aptitude needrestart bc zip unzip tree htop tmux vim-gtk3 libxml2-utils cmigemo vifm sshfs curlftpfs fuse fuse-zip fusefat fuseiso).each do |pkg|
+%w(build-essential software-properties-common aptitude needrestart bc zip unzip tree htop tmux vim-gtk3 libxml2-utils cmigemo python-is-python3 python3-pynvim vifm sshfs curlftpfs fuse3 fuse-zip fusefat fuseiso).each do |pkg|
   package pkg do
     action :install
   end
