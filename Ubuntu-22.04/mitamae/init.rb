@@ -133,6 +133,58 @@ end
 include_recipe 'docker'
 include_recipe 'docker-rootless'
 
+home_bin = File.join(home, "bin")
+directory home_bin do
+  action :create
+  user user
+  owner user
+  group user
+end
+
+node[:gvim_version] ||= "v9.0.1107"
+gvim_version = node[:gvim_version]
+
+node[:gvim_bin] ||= "GVim-#{gvim_version}.glibc2.15-x86_64.AppImage"
+gvim_bin = node[:gvim_bin]
+
+node[:gvim_checksum] ||= "750bb46f34ae70937ff81e08336c5b51c53a7a66f0e0bbf6bec6594ea8bf4cb8"
+
+node[:gvim_url] ||= "https://github.com/vim/vim-appimage/releases/download/#{gvim_version}/#{gvim_bin}"
+download node[:gvim_url] do
+  destination File.join(home_bin, gvim_bin)
+  user user
+  mode "755"
+  checksum node[:gvim_checksum]
+end
+%w(vim gvim).each do |bin|
+  link File.join(home_bin, bin) do
+    to gvim_bin
+    user user
+    cwd home_bin
+  end
+end
+
+node[:vifm_version] ||= "v0.12.1"
+vifm_version = node[:vifm_version]
+
+node[:vifm_bin] ||= "vifm-#{vifm_version}-x86_64.AppImage"
+vifm_bin = node[:vifm_bin]
+
+node[:vifm_checksum] ||= "2034d8e3e568fd3109526c48d3cdc8ed08d0bc3a3d2d76538fe293cbfc45fcc5"
+
+node[:vifm_url] ||= "https://github.com/vifm/vifm/releases/download/#{vifm_version}/#{vifm_bin}"
+download node[:vifm_url] do
+  destination File.join(home_bin, vifm_bin)
+  user user
+  mode "755"
+  checksum node[:vifm_checksum]
+end
+link File.join(home_bin, "vifm") do
+  to vifm_bin
+  user user
+  cwd home_bin
+end
+
 git_clone File.join(home, 'repo/github.com/nakahiro386/dotfiles') do
   repository "git@github.com:nakahiro386/dotfiles.git"
   user user
