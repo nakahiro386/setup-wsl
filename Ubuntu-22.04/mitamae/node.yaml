@@ -26,6 +26,8 @@ present_packages:
   - fusefat
   - fuseiso
   - python3-pip
+  - universal-ctags
+  - tig
 
 gvim_version: "v9.0.1107"
 gvim_checksum: "750bb46f34ae70937ff81e08336c5b51c53a7a66f0e0bbf6bec6594ea8bf4cb8"
