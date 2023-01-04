@@ -118,3 +118,5 @@ link File.join(node[:home], '.vim') do
   to vimfiles
   user user
 end
+
+include_recipe 'recipe/lazygit'
