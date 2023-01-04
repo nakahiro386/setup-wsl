@@ -55,6 +55,13 @@ end
 # 日本語化
 include_recipe 'recipe/localize'
 
+node[:apt_ppa_repository].each do |repo|
+  execute "add-apt-repository" do
+    command "add-apt-repository -y -P ppa:#{repo}"
+    not_if %Q!add-apt-repository -L | grep -o -E "deb +https://ppa.launchpadcontent.net/#{repo}"!
+  end
+end
+
 node[:present_packages].each do |pkg|
   package pkg
 end

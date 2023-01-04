@@ -1,3 +1,5 @@
+apt_ppa_repository:
+  - git-core/ppa
 absent_packages:
   - nano
 present_packages:
