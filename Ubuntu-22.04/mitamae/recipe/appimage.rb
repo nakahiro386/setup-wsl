@@ -2,14 +2,14 @@ define :install_appimage, destination_dir: nil, checksum: nil, link_names: []  d
   base_name = File.basename(params[:name])
   download params[:name] do
     destination File.join(params[:destination_dir], base_name)
-    user user
+    user node[:target_user]
     mode "755"
     checksum params[:checksum]
   end
   params[:link_names].each do |bin|
     link File.join(params[:destination_dir], bin) do
       to base_name
-      user user
+      user node[:target_user]
       cwd params[:destination_dir]
     end
   end
