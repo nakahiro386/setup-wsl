@@ -1,0 +1,39 @@
+apt_ppa_repository:
+  - git-core/ppa
+absent_packages:
+  - nano
+present_packages:
+  - build-essential
+  - software-properties-common
+  - aptitude
+  - needrestart
+  - bc
+  - zip
+  - unzip
+  - tree
+  - htop
+  - tmux
+  - vim-gtk3
+  - libxml2-utils
+  - cmigemo
+  - python-is-python3
+  - python3-pynvim
+  - vifm
+  - sshfs
+  - curlftpfs
+  - fuse3
+  - fuse-zip
+  - fusefat
+  - fuseiso
+  - python3-pip
+  - universal-ctags
+  - tig
+
+gvim_version: "v9.0.1107"
+gvim_checksum: "750bb46f34ae70937ff81e08336c5b51c53a7a66f0e0bbf6bec6594ea8bf4cb8"
+
+vifm_version: "v0.12.1"
+vifm_checksum: "2034d8e3e568fd3109526c48d3cdc8ed08d0bc3a3d2d76538fe293cbfc45fcc5"
+
+lazygit_version: "0.36.0"
+lazygit_checksum: "001c7f9b6db7e1fab625ccfea251d7f978ea6dba7dc9e14b64ccd0dccc2992db"
