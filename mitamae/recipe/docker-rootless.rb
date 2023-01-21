@@ -43,16 +43,16 @@ Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_SLIRP4NETNS_SANDBOX=false"
   EOH
 end
 
-file File.join(home, ".bashrc") do
-  action :edit
-  block do |content|
-    unless content =~ /^export DOCKER_HOST/
-      content.concat <<-CONF
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-      CONF
-    end
-  end
-end
+# file File.join(home, ".bashrc") do
+  # action :edit
+  # block do |content|
+    # unless content =~ /^export DOCKER_HOST/
+      # content.concat <<-CONF
+# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+      # CONF
+    # end
+  # end
+# end
 
 execute "sudo -i -u #{user} dockerd-rootless-setuptool.sh --skip-iptables install" do
   not_if "test -f #{File.join(home, user_systemd_dir, "docker.service")}"

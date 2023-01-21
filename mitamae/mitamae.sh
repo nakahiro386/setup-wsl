@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-mitamae_version='1.12.7'
-mitamae_sha256='53074fd65e3925c92a188dcd3378519850b9cd79f39cffe84da529b9e86010a6'
+mitamae_version='1.14.0'
+mitamae_sha256='318968af9995c83929a5aedd3216e9c4ecb14db2e53340efaac4444ff5e18bde'
 mitamae_bin="bin/mitamae-x86_64-linux-${mitamae_version}"
 
 cd $(dirname $0)

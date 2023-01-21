@@ -1,6 +1,6 @@
 mitamae/bin/*
 !mitamae/bin/.gitkeep
-mitamae/proxy.yaml
+proxy.yaml
 ansible/facts/*
 !ansible/facts/.gitkeep
 ansible/log/*
@@ -10,3 +10,4 @@ ansible/roles/*
 *.retry
 .env
 .venv
+_*.yaml

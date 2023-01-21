@@ -112,41 +112,5 @@
       tags: 'vifm'
       become: yes
 
-    - block:
-      - name: Add git-core apt repository
-        apt_repository:
-          repo: ppa:git-core/ppa
-          state: present
-      - name: Install git  packages
-        apt:
-          pkg: git
-          state: present
-      tags: 'git'
-      become: yes
-
-    - block:
-      - name: Add lazygit apt repository
-        apt_repository:
-          repo: ppa:lazygit-team/release
-          state: present
-      - name: Install lazygit  packages
-        apt:
-          pkg: lazygit
-          state: present
-      tags: 'lazygit'
-      become: yes
-
-    - block:
-      - name: Add universal-ctags apt repository
-        apt_repository:
-          repo: ppa:hnakamur/universal-ctags
-          state: present
-      - name: Install universal-ctags packages
-        apt:
-          pkg: universal-ctags
-          state: present
-      tags: 'universal-ctags'
-      become: yes
-
   post_tasks:
 
