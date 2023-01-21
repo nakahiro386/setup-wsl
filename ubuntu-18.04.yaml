@@ -1,33 +1,29 @@
 apt_ppa_repository:
   - git-core/ppa
+  - hnakamur/universal-ctags
 absent_packages:
   - nano
 present_packages:
-  - build-essential
   - software-properties-common
+  - python3-apt
   - aptitude
-  - needrestart
+  - language-pack-ja
+  - bash-completion
+  - vim-gtk3
+  - htop
   - bc
+  - tig
+  - debian-goodies
+  - jq
+  - facter
   - zip
   - unzip
-  - tree
-  - htop
-  - tmux
-  - vim-gtk3
+  - sshfs
   - libxml2-utils
   - cmigemo
-  - python-is-python3
-  - python3-pynvim
-  - vifm
-  - sshfs
-  - curlftpfs
-  - fuse3
-  - fuse-zip
-  - fusefat
-  - fuseiso
-  - python3-pip
+  - tmux
   - universal-ctags
-  - tig
+  - fonts-vlgothic
 
 gvim_version: "v9.0.1107"
 gvim_checksum: "750bb46f34ae70937ff81e08336c5b51c53a7a66f0e0bbf6bec6594ea8bf4cb8"
