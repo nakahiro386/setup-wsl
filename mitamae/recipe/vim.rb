@@ -13,7 +13,7 @@ define :vim_build do
     remote_hash = run_command("git rev-parse origin/master", user: user, cwd: dest_dir, log_output: true).stdout.chomp
   end
 
-  if current_hash != remote_hash
+  if !File.file?(File.join(make_dir, 'vim')) || current_hash != remote_hash
     execute "git pull" do
       command "git pull"
       cwd dest_dir
