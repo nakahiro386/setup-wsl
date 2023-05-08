@@ -6,7 +6,7 @@ define :lazygit_install, version: nil, destination_dir: nil, checksum: nil do
 
   tmp_dest = File.join("/tmp", base_name)
   bin_path = File.join(params[:destination_dir], "lazygit")
-  installed = FileTest.file?(bin_path) && run_command(%Q!echo "#{params[:checksum]} #{bin_path}" | sha256sum -c!, error: false).exit_status
+  installed = FileTest.file?(bin_path) && run_command(%Q!echo "#{params[:checksum]} #{bin_path}" | sha256sum -c!, error: false).exit_status == 0
 
   download download_url do
     destination tmp_dest

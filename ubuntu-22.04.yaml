@@ -38,8 +38,8 @@ gvim_checksum: "750bb46f34ae70937ff81e08336c5b51c53a7a66f0e0bbf6bec6594ea8bf4cb8
 vifm_version: "v0.13"
 vifm_checksum: "d96cf8feca95b28c8c784ca2cb50f4732c1941d0c71af8e2bcccaf1b1f042792"
 
-lazygit_version: "0.36.0"
-lazygit_checksum: "001c7f9b6db7e1fab625ccfea251d7f978ea6dba7dc9e14b64ccd0dccc2992db"
+lazygit_version: "0.38.2"
+lazygit_checksum: "f2cb242194994758f5185955ea0bef8364844536bcf2ea55e5caceb6adb7c337"
 
 vim_packages:
   - build-essential
