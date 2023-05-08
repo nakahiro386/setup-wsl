@@ -11,6 +11,7 @@ define :install_appimage, destination_dir: nil, checksum: nil, link_names: []  d
       to base_name
       user node[:target_user]
       cwd params[:destination_dir]
+      force true
     end
   end
 end
