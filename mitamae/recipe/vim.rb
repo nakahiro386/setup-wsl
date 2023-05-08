@@ -7,9 +7,11 @@ define :vim_build do
   make_dir = File.join(dest_dir, "src")
   user = params[:user]
 
-  run_command("git fetch", user: user, cwd: dest_dir, log_output: true)
-  current_hash = run_command("git rev-parse HEAD", user: user, cwd: dest_dir, log_output: true).stdout.chomp
-  remote_hash = run_command("git rev-parse origin/master", user: user, cwd: dest_dir, log_output: true).stdout.chomp
+  if File.directory?(dest_dir)
+    run_command("git fetch", user: user, cwd: dest_dir, log_output: true)
+    current_hash = run_command("git rev-parse HEAD", user: user, cwd: dest_dir, log_output: true).stdout.chomp
+    remote_hash = run_command("git rev-parse origin/master", user: user, cwd: dest_dir, log_output: true).stdout.chomp
+  end
 
   if current_hash != remote_hash
     execute "git pull" do
