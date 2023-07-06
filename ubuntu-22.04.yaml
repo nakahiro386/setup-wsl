@@ -45,8 +45,14 @@ vim_packages:
   - build-essential
   - automake
   - autoconf
+  - lcov
   - cproto
+  - cscope
   - gettext
   - lua5.4
   - liblua5.4-0
   - liblua5.4-dev
+  - libcanberra-dev
+  - libsodium-dev
+  - libtool-bin
+  - at-spi2-core
