@@ -16,12 +16,16 @@ define :install_appimage, destination_dir: nil, checksum: nil, link_names: []  d
   end
 end
 
-gvim_version = node[:gvim_version]
-node[:gvim_url] ||= "https://github.com/vim/vim-appimage/releases/download/#{gvim_version}/GVim-#{gvim_version}.glibc2.15-x86_64.AppImage"
+install_appimage node[:vim_url] do
+  checksum node[:vim_checksum]
+  destination_dir File.join(node[:home], "bin")
+  link_names %w(vim)
+end
+
 install_appimage node[:gvim_url] do
   checksum node[:gvim_checksum]
   destination_dir File.join(node[:home], "bin")
-  link_names %w(vim gvim)
+  link_names %w(gvim)
 end
 
 vifm_version = node[:vifm_version]
