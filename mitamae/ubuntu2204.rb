@@ -24,10 +24,10 @@ include_recipe 'recipe/localize'
 include_recipe 'recipe/sshd'
 include_recipe 'recipe/home'
 
-node[:docker_rootless] ||= {}
-node[:docker_rootless][:user] = user
+# node[:docker_rootless] ||= {}
+# node[:docker_rootless][:user] = user
 include_recipe 'recipe/docker'
-include_recipe 'recipe/docker-rootless'
+# include_recipe 'recipe/docker-rootless'
 
 # vim, vifm
 include_recipe 'recipe/appimage'

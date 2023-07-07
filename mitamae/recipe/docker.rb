@@ -22,3 +22,13 @@ end
     action :install
   end
 end
+
+node[:docker_rootless] ||= {}
+if node[:docker_rootless] == {}
+  %w(docker.service docker.socket containerd.service).each do |name|
+    service name do
+      action [:enable, :start]
+    end
+  end
+end
+
