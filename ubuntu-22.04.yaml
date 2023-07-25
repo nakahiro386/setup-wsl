@@ -28,6 +28,7 @@ present_packages:
   - fusefat
   - fuseiso
   - python3-pip
+  - python3-venv
   - universal-ctags
   - tig
   - fonts-vlgothic
