@@ -27,7 +27,7 @@ export no_proxy=#{no_proxy}
   EOH
 end
 
-file "/etc/apt/apt.conf.d/95proxy" do
+file "/etc/apt/apt.conf.d/90curtin-aptproxy" do
   action :create
   owner "root"
   group "root"
