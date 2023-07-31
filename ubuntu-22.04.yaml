@@ -1,5 +1,4 @@
 ssh_port: 2204
-git_protocol: "git@"
 apt_ppa_repository:
   - git-core/ppa
 absent_packages:

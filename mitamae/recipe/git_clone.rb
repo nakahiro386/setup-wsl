@@ -1,12 +1,13 @@
-git_protocol =  node[:git_protocol] ||= "git@"
+dotfiles_url =  node[:dotfiles_url] ||= "git@github.com:nakahiro386/dotfiles.git"
 git_clone File.join(node[:home], 'repo/github.com/nakahiro386/dotfiles') do
-  repository "#{git_protocol}github.com:nakahiro386/dotfiles.git"
+  repository dotfiles_url
   user user
 end
 
+vimfiles_url =  node[:vimfiles_url] ||= "git@github.com:nakahiro386/vimfiles.git"
 vimfiles = File.join(node[:home], 'repo/github.com/nakahiro386/vimfiles')
 git_clone "#{vimfiles}" do
-  repository "#{git_protocol}github.com:nakahiro386/vimfiles.git"
+  repository vimfiles_url
   user user
 end
 link File.join(node[:home], '.vim') do
