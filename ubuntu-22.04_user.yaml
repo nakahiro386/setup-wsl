@@ -1,0 +1,13 @@
+vim_url: "https://github.com/vim/vim-appimage/releases/download/v9.0.1672/Vim-v9.0.1672.glibc2.29-x86_64.AppImage"
+vim_checksum: "6960c82c0df2ed3dae1a13f6e4c1cf747242a0af5d892804fabf5cd6d8fbd008"
+
+gvim_url: "https://github.com/vim/vim-appimage/releases/download/v9.0.1672/GVim-v9.0.1672.glibc2.29-x86_64.AppImage"
+gvim_checksum: "e60858b198b03b136187d47c71f74a7f72dd3c73c16520d41fe744e493011fad"
+
+vifm_version: "v0.13"
+vifm_checksum: "d96cf8feca95b28c8c784ca2cb50f4732c1941d0c71af8e2bcccaf1b1f042792"
+
+lazygit_version: "0.38.2"
+lazygit_checksum: "f2cb242194994758f5185955ea0bef8364844536bcf2ea55e5caceb6adb7c337"
+
+vim_packages: []
