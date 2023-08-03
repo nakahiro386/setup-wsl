@@ -1,7 +1,9 @@
+# node[:apt_mirror] ||= "mirror://mirrors.ubuntu.com/mirrors.txt"
+node[:apt_mirror] ||= "http://jp.archive.ubuntu.com/ubuntu/"
 file '/etc/apt/sources.list' do
   action :edit
   block do |content|
-    content.gsub!(/http:\/\/[^ ]*archive.ubuntu.com\/ubuntu\//, "mirror://mirrors.ubuntu.com/mirrors.txt")
+    content.gsub!(/http:\/\/[^ ]*archive.ubuntu.com\/ubuntu\//, node[:apt_mirror])
   end
   notifies :run, "execute[apt update]", :immediately
 end
