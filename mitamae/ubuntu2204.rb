@@ -20,6 +20,7 @@ include_recipe 'recipe/apt_ppa_repository'
 include_recipe 'recipe/packages'
 
 include_recipe 'recipe/localize'
+include_recipe 'recipe/locate'
 
 include_recipe 'recipe/sshd'
 include_recipe 'recipe/home'
